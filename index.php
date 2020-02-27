@@ -9,9 +9,11 @@ use Slim\Factory\AppFactory;
 
 require './vendor/autoload.php';
 
-$path =  '/' . explode('\\', dirname(__FILE__))[count(explode('\\', dirname(__FILE__))) - 1];
+// $separator = dirname(__FILE__)[0];
+// $path =  '/' . explode($separator, dirname(__FILE__))[count(explode($separator, dirname(__FILE__))) - 1];
+// echo $path;
 $app = AppFactory::create();
-$app->setBasePath($path);
+$app->setBasePath('/');
 
 $app->post('/message', function (Request $request, Response $response, array $args) {
     global $_PRIV8MESSAGING;
@@ -40,10 +42,10 @@ $app->post('/message', function (Request $request, Response $response, array $ar
             echo json_encode(array("message" => "Unable to register the user."));
         }
 
-        $response->status(200);
+        $response->withStatus(200);
         $response->getBody()->write(json_encode(array('status' => 'ok', 'message' => 'message sent to node ' . $_PRIV8MESSAGING['name'])));
     } else {
-        $response->status(400);
+        $response->withStatus(400);
         $response->getBody()->write(json_encode(array('status' => 'error', 'message' => 'missing params')));
     }
     return $response;
@@ -52,7 +54,7 @@ $app->post('/message', function (Request $request, Response $response, array $ar
 $app->get('/', function (Request $request, Response $response, array $args) {
     global $_PRIV8MESSAGING;
     $message = array('version' => $_PRIV8MESSAGING['version'], 'name' => $_PRIV8MESSAGING['name'], 'address' => $_PRIV8MESSAGING['address'], 'message' => $_PRIV8MESSAGING['message'], 'contact' => $_PRIV8MESSAGING['contact'], 'messages' => 0);
-    $response->status(200);
+    $response->withStatus(200);
     $response->getBody()->write(json_encode($message));
     return $response;
 });
