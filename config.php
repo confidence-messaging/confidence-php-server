@@ -2,12 +2,12 @@
 
 $_PRIV8MESSAGING = array (
     'version' => '0.0.1',
-    'address'=> 'http://localhost/priv8-messaging',
-    'name' => 'bitragem_priv8',
-    'message' => 'Official Priv8Messaging server',
+    'address'=> 'http://localhost/confidence-php-server',
+    'name' => 'confidence_php_server',
+    'message' => 'Official Confidence PHP Server',
     'contact' => 'contact@obex.pw',
     'DB_HOST' => 'localhost',
-    'DB_NAME' => 'bitragem',
+    'DB_NAME' => 'confidence',
     'DB_USER' => 'root',
-    'DB_PASS' => '',
+    'DB_PASSWORD' => '',
 );
