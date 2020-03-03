@@ -40,7 +40,7 @@ $app->post('/message', function (Request $request, Response $response, array $ar
         $stmt = $conn->prepare("INSERT INTO messages
         SET to = :to,
             message = :message,
-            visibelAt = :visibleAt");
+            visibleAt = :visibleAt");
 
         $stmt->bindParam(':from', $parsedBody->from);
         $stmt->bindParam(':to', $parsedBody->to);
