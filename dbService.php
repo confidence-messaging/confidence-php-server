@@ -9,10 +9,11 @@ class DatabaseService
     public function getConnection()
     {
 
+        global $_CONFIDENCE;
         $this->conn = null;
 
         try {
-            $this->conn = new PDO("mysql:host=" . $_PRIV8MESSAGING['DB_HOST'] . ";dbname=" .  $_PRIV8MESSAGING['DB_NAME'],$_PRIV8MESSAGING['DB_USER'],  $_PRIV8MESSAGING['DB_PASSWORD']);
+            $this->conn = new PDO("mysql:host=" . $_CONFIDENCE['DB_HOST'] . ";dbname=" .  $_CONFIDENCE['DB_NAME'],$_CONFIDENCE['DB_USER'],  $_CONFIDENCE['DB_PASSWORD']);
         } catch (PDOException $exception) {
             echo "Connection failed: " . $exception->getMessage();
         }
